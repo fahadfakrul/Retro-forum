@@ -35,6 +35,29 @@
     font-weight: 500;
 
 }
-.retro{
+
+.retro {
     color: linear-gradient(90deg, #797DFC 0.63%, rgba(121, 125, 252, 0.00) 41%);
+}
+
+.section-title {
+    color: #12132D;
+    font-size: 40px;
+    font-weight: 900;
+
+}
+
+.section-description {
+    color: rgba(18, 19, 45, 0.60);
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.discussion-heading {
+    color: rgba(18, 19, 45, 0.80);
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+
 }
