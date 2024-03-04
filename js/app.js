@@ -1,4 +1,7 @@
 const loadPosts = async (catId) => {
+    const loader= document.getElementById("loading-spinner");
+    loader.classList.add("block");
+    loader.classList.remove("hidden");
   const response = await fetch(
     `https://openapi.programming-hero.com/api/retro-forum/${catId}`
   );
@@ -7,6 +10,8 @@ const loadPosts = async (catId) => {
   const discussionContainer = document.getElementById("discussion-container");
   discussionContainer.innerHTML = "";
   posts.forEach((post) => {
+    setTimeout (function () {loader.classList.add("hidden")},2000);
+    
     const div = document.createElement("div");
     div.classList.add("singlepost");
     let activeBadge = "";
@@ -36,13 +41,13 @@ const loadPosts = async (catId) => {
                 <p class="mt-4 para-primary">${post.description}</p>
                 <div class="divider"></div>
                 <div class="flex  flex-grow justify-between">
-                    <div class="flex">
-                        <img class="mx-3" src="./images/message.png" alt="">
-                        <p  para-primary">${post.comment_count}</p>
-                        <img class="mx-3" src="./images/eye.png" alt="">
-                        <p  para-primary">${post.view_count}</p>
-                        <img class="mx-3" src="./images/clock.png" alt="">
-                        <p  para-primary">${post.posted_time} min</p>
+                    <div class="flex items-center">
+                        <img class="mx-1" src="./images/message.png" alt="">
+                        <p class="para-primary">${post.comment_count}</p>
+                        <img class="mx-1" src="./images/eye.png" alt="">
+                        <p  class="para-primary">${post.view_count}</p>
+                        <img class="mx-1" src="./images/clock.png" alt="">
+                        <p  class="para-primary">${post.posted_time} min</p>
                     </div>
                     <div class="" >
                        <button onclick="readPosts('${post.title}','${post.view_count}')"> <img src="./images/email.png" alt=""></button>
@@ -56,6 +61,9 @@ const loadPosts = async (catId) => {
   });
 };
 const searchPosts = async (catId) => {
+    const loader= document.getElementById("loading-spinner");
+    loader.classList.add("block");
+    loader.classList.remove("hidden");
   const response = await fetch(
     `https://openapi.programming-hero.com/api/retro-forum/posts?category=${catId}`
   );
@@ -64,6 +72,7 @@ const searchPosts = async (catId) => {
   const discussionContainer = document.getElementById("discussion-container");
   discussionContainer.innerHTML = "";
   posts.forEach((post) => {
+    setTimeout (function () {loader.classList.add("hidden")},2000);
     const div = document.createElement("div");
     div.classList.add("singlepost");
     let activeBadge = "";
@@ -146,6 +155,7 @@ const handleSearch = () => {
 }
 
 const postCards = async () => {
+    
     const response = await fetch(
       `https://openapi.programming-hero.com/api/retro-forum/latest-posts`
     );
@@ -154,6 +164,7 @@ const postCards = async () => {
     
     const postCardContainer = document.getElementById("latest-post-cards-container");
     data.forEach((post) => {
+        
       const div = document.createElement("div");
       div.classList.add("latest-post-cards");
       div.innerHTML = `
