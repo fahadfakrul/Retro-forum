@@ -113,6 +113,7 @@ const searchPosts = async (catId) => {
   });
 };
 
+
 let count = 0;
 
 const readPosts = (title, view_count) => {
@@ -143,9 +144,50 @@ const handleSearch = () => {
     }
 
 }
+
+const postCards = async () => {
+    const response = await fetch(
+      `https://openapi.programming-hero.com/api/retro-forum/latest-posts`
+    );
+    const data = await response.json();
+    console.log(data);
+    
+    const postCardContainer = document.getElementById("latest-post-cards-container");
+    data.forEach((post) => {
+      const div = document.createElement("div");
+      div.classList.add("latest-post-cards");
+      div.innerHTML = `
+      <div class="card card-compact  bg-base-100 shadow-xl">
+                        <div class="m-6 ">
+                            <img class="rounded-3xl" src="${post.cover_image}"
+                                alt="" />
+                        </div>
+                        <div class="card-body">
+                            <div class="flex">
+                                <img src="./images/Calendar.png" alt="">
+                                <p class="para-primary ml-1">${post.author.posted_date ? post.author.posted_date : "No Published Date"}</p>
+                            </div>
+                            <h2 class="card-title text-[#12132D] text-lg font-extrabold">${post.title}</h2>
+                            <p class="para-primary">${post.description.slice(0,100)}</p>
+                            <div class="flex gap-4">
+                                <img class="rounded-full"
+                                    src="${post.profile_image}" height="44"
+                                    width="44" alt="">
+                                <div>
+                                    <h3 class="text-[#12132D] font-bold">${post.author.name}</h3>
+                                    <p class="para-primary">${post.author.designation ? post.author.designation : "Unknown"}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      `;
+      postCardContainer.appendChild(div);
+    });
+  };
 function setInnerText(id, value) {
     document.getElementById(id).innerText = value;
     console.log(document.getElementById.innerText);
   }
 loadPosts("posts");
+postCards();
 
