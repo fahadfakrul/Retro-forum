@@ -61,3 +61,12 @@
     font-weight: 500;
 
 }
+
+.read-post{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem
+}
