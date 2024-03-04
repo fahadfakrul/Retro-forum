@@ -102,13 +102,13 @@ const searchPosts = async (catId) => {
                 <p class="mt-4 para-primary">${post.description}</p>
                 <div class="divider"></div>
                 <div class="flex  flex-grow justify-between">
-                    <div class="flex">
+                    <div class="flex items-center">
                         <img class="mx-3" src="./images/message.png" alt="">
-                        <p  para-primary">${post.comment_count}</p>
+                        <p  class="para-primary">${post.comment_count}</p>
                         <img class="mx-3" src="./images/eye.png" alt="">
-                        <p  para-primary">${post.view_count}</p>
+                        <p  class="para-primary">${post.view_count}</p>
                         <img class="mx-3" src="./images/clock.png" alt="">
-                        <p  para-primary">${post.posted_time} min</p>
+                        <p  class="para-primary">${post.posted_time} min</p>
                     </div>
                     <div class="" >
                        <button onclick="readPosts('${post.title}','${post.view_count}')"> <img src="./images/email.png" alt=""></button>
